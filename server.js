@@ -2,8 +2,6 @@ import express from "express";
 import data from "./data.js";
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import res from "express/lib/response";
-import seedRouter from './models/routes/seedRoutes';
 
 dotenv.config();
 
@@ -15,7 +13,6 @@ mongoose.connect(process.env.MONGODB_URI).then(()=>{
 })
 
 const app = express();
-res.use('/api/seed', seedRouter);
 
 app.get('/api/products', (req, res) => {
   res.send(data.products);
